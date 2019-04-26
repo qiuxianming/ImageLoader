@@ -45,13 +45,23 @@ ext {
     libraryDesc = 'An image loading package library with Glide'
     publishedGroupId = 'com.ams.imageloader'                            // 填写groupId， 一般是包名，比如：com.android.support
     versionName = '1.0.0'                                               // 版本号，比如：22.2.1
-    websiteUrl = ''                                                     // 可以填写github上的库地址.
-    issueTrackerUrl = ''                                                // 可以填写github库的issue地址.
-    vcsUrl = ''                                                         // 可以填写github上库的地址.
+    websiteUrl = 'https://github.com/qiuxianming/ImageLoader'		        // 可以填写github上的库地址.
+    issueTrackerUrl = 'https://github.com/qiuxianming/ImageLoader/issues'	// 可以填写github库的issue地址.
+    vcsUrl = 'https://github.com/qiuxianming/ImageLoader.git'		        // 可以填写github上库的地址.
     licenseName = "Apache-2.0"
     libraryVersionDesc = 'version descriotion'
 
+    // maven
+    artifact = 'imageloader'                                            // 必须和library module的名字相同
+    libraryName = 'imageloader'
+    developerId = 'ams'
+    developerName = 'ams'
+    developerEmail = 'qiuxianming.it@gmail.com'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+
 }
 
+apply from: 'android-maven-install.gradle'
 apply from: 'android-tasks.gradle'
 apply from: 'bintray.gradle'
