@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // ImageLoader默认使用Glide图片库加载
+    api 'com.github.bumptech.glide:glide:4.2.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
+    // Glide配置OkHttp加载
+    implementation 'com.github.bumptech.glide:okhttp3-integration:4.2.0'
+    // 长图加载
+    api 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
+}
+
+ext {
+    libraryPackaging = 'aar'                                            //上传aar形式的打包文件
+
+    // jcenter
+    bintrayRepo = "maven"                                               // 你上传的位于bintray中的Repository名称，如果没有创建会有一个叫maven的
+    name = 'imageloader'                                                // 必须和library module的名字相同
+    libraryDesc = 'An image loading package library with Glide'
+    publishedGroupId = 'com.ams.imageloader'                            // 填写groupId， 一般是包名，比如：com.android.support
+    versionName = '1.0.0'                                               // 版本号，比如：22.2.1
+    websiteUrl = ''                                                     // 可以填写github上的库地址.
+    issueTrackerUrl = ''                                                // 可以填写github库的issue地址.
+    vcsUrl = ''                                                         // 可以填写github上库的地址.
+    licenseName = "Apache-2.0"
+    libraryVersionDesc = 'version descriotion'
+
+}
+
+apply from: 'android-tasks.gradle'
+apply from: 'bintray.gradle'
